@@ -19,7 +19,7 @@ export const useComponent = <
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [entity, componentName]);
 
   return componentValue;
 };

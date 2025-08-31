@@ -7,7 +7,7 @@ type ISystemProps<TComponents, TSignal> = {
   signals: TSignal[];
 };
 
-export class System<TComponents, TSignal> {
+export class System<TComponents, TSignal extends string> {
   public readonly name: ISystemProps<TComponents, TSignal>["name"];
   public readonly fn: ISystemProps<TComponents, TSignal>["fn"];
   public readonly signals: ISystemProps<TComponents, TSignal>["signals"];
