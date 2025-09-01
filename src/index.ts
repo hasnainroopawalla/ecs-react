@@ -1,3 +1,3 @@
-export * from "./types";
-export * from "./hooks";
-export * from "./ecs";
+export { useComponent } from "./hooks";
+export { ECS } from "./ecs";
+export type { ComponentSchema, SignalSchema, WithEntityProps } from "./types";

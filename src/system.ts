@@ -1,5 +1,6 @@
 import type { Entity } from "./entity";
-import { SignalManager, type Unsubscribe } from "./signal-manager";
+import { SignalManager } from "./signal-manager";
+import type { Unsubscribe } from "./types";
 
 type ISystemProps<TComponents, TSignal> = {
   name: string;

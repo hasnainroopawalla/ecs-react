@@ -1,4 +1,4 @@
-export type Unsubscribe = () => void;
+import type { Unsubscribe } from "./types";
 
 export class SignalManager<
   TSignal extends PropertyKey,

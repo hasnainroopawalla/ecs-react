@@ -3,7 +3,7 @@ import {
   ECS,
   useComponent,
   type ComponentSchema,
-  type SignalsSchema,
+  type SignalSchema,
   type WithEntityProps,
 } from "../../../src";
 
@@ -12,7 +12,7 @@ type MyComponents = ComponentSchema<{
   label: string;
 }>;
 
-type MySignals = SignalsSchema<"click" | "hover">;
+type MySignals = SignalSchema<"click" | "hover">;
 
 const ecs = new ECS<MyComponents, MySignals>();
 
@@ -30,15 +30,6 @@ ecs.createSystem({
   },
 });
 
-export const App: React.FC = () => {
-  return (
-    <div style={{ display: "flex", gap: "10px" }}>
-      <Button entity={counterEntity} />
-      <Display entity={counterEntity} />
-    </div>
-  );
-};
-
 const Button: React.FC<WithEntityProps<MyComponents>> = ({ entity }) => {
   return <button onClick={() => ecs.signal("click", entity)}>Click</button>;
 };
@@ -47,4 +38,13 @@ const Display: React.FC<WithEntityProps<MyComponents>> = ({ entity }) => {
   const counter = useComponent(entity, "counter");
 
   return <span>{counter?.count}</span>;
+};
+
+export const App: React.FC = () => {
+  return (
+    <div style={{ display: "flex", gap: "10px" }}>
+      <Button entity={counterEntity} />
+      <Display entity={counterEntity} />
+    </div>
+  );
 };
