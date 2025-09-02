@@ -37,8 +37,9 @@ describe("Entity", () => {
     });
 
     it("should not update if component does not exist", () => {
-      entity.updateComponent("health", prev => prev + 10);
-      expect(entity.getComponent("health")).toBeUndefined();
+      expect(() => {
+        entity.updateComponent("health", prev => prev + 10);
+      }).toThrow("Component {health} does not exist on the entity.");
     });
   });
 

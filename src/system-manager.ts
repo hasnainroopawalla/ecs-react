@@ -40,12 +40,19 @@ export class SystemManager<TComponents, TSignal extends string> {
 
   public deleteSystem(name: string): void {
     this.unsubscribers.get(name)?.forEach(unsubscribe => unsubscribe());
-
-    // TODO delete from Set
-    // this.systems.delete(name)
+    this.deleteSystemByName(name);
   }
 
   public signal(name: TSignal, entity: Entity<TComponents>): void {
     this.signalManager.emit(name, { entity });
+  }
+
+  private deleteSystemByName(name: string): void {
+    for (const system of this.systems) {
+      if (system.name === name) {
+        this.systems.delete(system);
+        break;
+      }
+    }
   }
 }

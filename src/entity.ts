@@ -35,7 +35,9 @@ export class Entity<TComponents> {
     const component = this.getComponent(componentName);
 
     if (!component) {
-      return; // TODO: add logging
+      throw new Error(
+        `Component {${componentName.toString()}} does not exist on the entity.`
+      );
     }
 
     this.components[componentName] = componentValueSetter(component);
