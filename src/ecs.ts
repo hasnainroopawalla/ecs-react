@@ -1,5 +1,7 @@
-import { Entity, EntityManager } from "./entity";
-import { System, SystemManager } from "./system";
+import { Entity } from "./entity";
+import { System } from "./system";
+import { EntityManager } from "./entity-manager";
+import { SystemManager } from "./system-manager";
 
 type IECS<TComponents extends object, TSignals extends string> = Pick<
   EntityManager<TComponents>,
