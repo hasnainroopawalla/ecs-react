@@ -30,7 +30,7 @@ Unlike traditional state management solutions like Redux or MobX, which organize
 
 ## Core Concepts
 
-👉 Complete example can be found here: [examples/react-app](https://github.com/hasnainroopawalla/ecs-react/tree/main/examples/react-app)
+👉 Complete example can be found here: [examples/ecs-react-example](https://github.com/hasnainroopawalla/ecs-react/tree/main/examples/ecs-react-example)
 
 ### 1. Defining Types
 
