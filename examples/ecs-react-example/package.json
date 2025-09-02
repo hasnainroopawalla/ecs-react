@@ -8,7 +8,7 @@
     "build": "tsc && vite build"
   },
   "dependencies": {
-    "ecs-react": "^1.1.1",
+    "ecs-react": "^1.1.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
