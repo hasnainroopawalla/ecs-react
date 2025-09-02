@@ -1,6 +1,13 @@
 import * as React from "react";
 import type { Entity } from "./entity";
 
+/**
+ * Subscribes to updates on a specific Component of an Entity.
+ *
+ * @param entity
+ * @param componentName
+ * @returns the latest Component value if it exists on the Entity.
+ */
 export const useComponent = <
   TComponents,
   TComponentName extends keyof TComponents

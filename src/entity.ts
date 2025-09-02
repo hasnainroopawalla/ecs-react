@@ -13,6 +13,12 @@ export class Entity<TComponents> {
     this.signalManager = new SignalManager();
   }
 
+  /**
+   * Adds a Component to the Entity.
+   *
+   * @param componentName
+   * @param componentValue
+   */
   public addComponent<TComponentName extends keyof TComponents>(
     componentName: TComponentName,
     componentValue: TComponents[TComponentName]
@@ -20,12 +26,23 @@ export class Entity<TComponents> {
     this.components[componentName] = componentValue;
   }
 
+  /**
+   * Returns the Component if it exists on the Entity.
+   *
+   * @param componentName
+   */
   public getComponent<TComponentName extends keyof TComponents>(
     componentName: TComponentName
   ): TComponents[TComponentName] | undefined {
     return this.components[componentName];
   }
 
+  /**
+   * Updates the Component value on the Entity if it exists.
+   *
+   * @param componentName
+   * @param componentValueSetter
+   */
   public updateComponent<TComponentName extends keyof TComponents>(
     componentName: TComponentName,
     componentValueSetter: (

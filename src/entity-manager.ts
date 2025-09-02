@@ -7,6 +7,9 @@ export class EntityManager<TComponents> {
     this.entities = new Set();
   }
 
+  /**
+   * Creates a standalone Entity.
+   */
   public createEntity(): Entity<TComponents> {
     const entity = new Entity<TComponents>();
     this.entities.add(entity);

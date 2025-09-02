@@ -20,6 +20,14 @@ export class SystemManager<TComponents, TSignal extends string> {
     this.unsubscribers = new Map();
   }
 
+  /**
+   * Creates a standalone System.
+   *
+   * @param name a unique name for the system.
+   * @param fn the callback to be executed when the system is triggered.
+   * @param signals a list of signals that the system reacts to.
+   * @returns
+   */
   public createSystem(
     props: ISystemProps<TComponents, TSignal>
   ): System<TComponents, TSignal> {
@@ -38,11 +46,23 @@ export class SystemManager<TComponents, TSignal extends string> {
     return system;
   }
 
+  /**
+   * Deletes an existing system if it exists.
+   *
+   * @param name the name of the system to be deleted.
+   */
   public deleteSystem(name: string): void {
     this.unsubscribers.get(name)?.forEach(unsubscribe => unsubscribe());
     this.deleteSystemByName(name);
   }
 
+  /**
+   * Triggers a Signal that propagates through the ECS and
+   * executes the appropriate systems.
+   *
+   * @param name the name of the Signal to be triggered.
+   * @param entity the entity involved in Signal trigger.
+   */
   public signal(name: TSignal, entity: Entity<TComponents>): void {
     this.signalManager.emit(name, { entity });
   }
