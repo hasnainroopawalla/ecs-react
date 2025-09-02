@@ -1,8 +1,10 @@
 {
-  "name": "react-ecs",
+  "name": "ecs-react",
   "version": "1.0.0",
-  "description": "React ECS Framework",
-  "repository": "https://github.com/hasnainroopawalla/react-ecs",
+  "description": "A lightweight ECS framework for React",
+  "repository": "https://github.com/hasnainroopawalla/ecs-react",
+  "author": "Hasnain Roopawalla",
+  "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -41,8 +43,6 @@
   "peerDependencies": {
     "react": ">=16.8.0"
   },
-  "author": "Hasnain Roopawalla",
-  "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^9.34.0",
     "@types/jest": "^30.0.0",
