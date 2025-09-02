@@ -1,5 +1,7 @@
 # ecs-react
 
+[![Minified Size](https://badgen.net/bundlephobia/min/ecs-react)](https://bundlephobia.com/result?p=ecs-react)
+
 A lightweight [Entity Component System (ECS)](https://en.wikipedia.org/wiki/Entity_component_system) implementation for React applications. This architecture allows React components to serve purely as renderers, while all state management and business logic is handled by the ECS pattern.
 
 This provides a type-safe and scalable way to manage complex state and behavior, particularly useful for any React application that benefits from decoupled state and rendering logic.
