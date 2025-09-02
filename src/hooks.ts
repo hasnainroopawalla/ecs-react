@@ -7,7 +7,7 @@ export const useComponent = <
 >(
   entity: Entity<TComponents>,
   componentName: TComponentName
-) => {
+): TComponents[TComponentName] | undefined => {
   const [componentValue, setComponentValue] = React.useState<
     TComponents[TComponentName] | undefined
   >(entity.getComponent(componentName));
@@ -19,7 +19,7 @@ export const useComponent = <
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [entity, componentName]);
 
   return componentValue;
 };

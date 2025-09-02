@@ -1,3 +1,14 @@
-export type ComponentSchema<T extends object> = T;
+import type { Entity } from "./entity";
 
-export type SignalsSchema<T extends string> = T;
+export type ComponentSchema<TComponents extends object> = TComponents;
+
+export type SignalSchema<TSignals extends string> = TSignals;
+
+export type WithEntityProps<
+  TComponents extends object,
+  TProps = object
+> = TProps & {
+  entity: Entity<TComponents>;
+};
+
+export type Unsubscribe = () => void;

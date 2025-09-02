@@ -1,11 +1,10 @@
 import * as React from "react";
 import {
-  EntityManager,
-  SystemManager,
-  Entity,
+  ECS,
   useComponent,
   type ComponentSchema,
-  type SignalsSchema,
+  type SignalSchema,
+  type WithEntityProps,
 } from "../../../src";
 
 type MyComponents = ComponentSchema<{
@@ -13,16 +12,15 @@ type MyComponents = ComponentSchema<{
   label: string;
 }>;
 
-type MySignals = SignalsSchema<"click" | "hover">;
+type MySignals = SignalSchema<"click" | "hover">;
 
-const systemManager = new SystemManager<MyComponents, MySignals>();
-const entityManager = new EntityManager<MyComponents>();
+const ecs = new ECS<MyComponents, MySignals>();
 
-const counterEntity = entityManager.createEntity();
+const counterEntity = ecs.createEntity();
 
 counterEntity.addComponent("counter", { count: 0 });
 
-systemManager.createSystem({
+ecs.createSystem({
   name: "counterSystem",
   signals: ["click"],
   fn: ({ entity }) => {
@@ -32,6 +30,16 @@ systemManager.createSystem({
   },
 });
 
+const Button: React.FC<WithEntityProps<MyComponents>> = ({ entity }) => {
+  return <button onClick={() => ecs.signal("click", entity)}>Click</button>;
+};
+
+const Display: React.FC<WithEntityProps<MyComponents>> = ({ entity }) => {
+  const counter = useComponent(entity, "counter");
+
+  return <span>{counter?.count}</span>;
+};
+
 export const App: React.FC = () => {
   return (
     <div style={{ display: "flex", gap: "10px" }}>
@@ -39,20 +47,4 @@ export const App: React.FC = () => {
       <Display entity={counterEntity} />
     </div>
   );
-};
-
-type EntityProps = {
-  entity: Entity<MyComponents>;
-};
-
-const Button: React.FC<EntityProps> = ({ entity }) => {
-  return (
-    <button onClick={() => systemManager.signal("click", entity)}>Click</button>
-  );
-};
-
-const Display: React.FC<EntityProps> = ({ entity }) => {
-  const counter = useComponent(entity, "counter");
-
-  return <span>{counter?.count}</span>;
 };
