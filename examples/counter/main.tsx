@@ -1,3 +1,4 @@
+import ReactDOM from "react-dom/client";
 import * as React from "react";
 import {
   ECS,
@@ -48,3 +49,5 @@ export const App: React.FC = () => {
     </div>
   );
 };
+
+ReactDOM.createRoot(document.getElementById("root")!).render(<App />);

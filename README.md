@@ -32,9 +32,36 @@ Unlike traditional state management solutions like Redux or MobX, which organize
 - **Systems**: Logic that operates on entities with specific components
 - **Signals**: Events that trigger system behaviors
 
+At a high level, an entity is the thing being described, its components hold
+the data, and systems change that data in response to signals. For example, a
+counter button can send a `click` signal for a counter entity:
+
+```mermaid
+flowchart TD
+    button["React Button"] -->|emits| signal["Signal: click"]
+    signal --> system["System: CounterSystem<br/>increments the count"]
+    system -->|updates| entity["Entity: Counter"]
+    entity --> component["Component: counter<br/>count: 0 → 1"]
+    component --> display["React Display<br/>reads the updated value"]
+
+    classDef signalStyle fill:#fff3cd,stroke:#d39e00,color:#664d03
+    classDef systemStyle fill:#d1e7dd,stroke:#198754,color:#0f5132
+    classDef entityStyle fill:#cfe2ff,stroke:#0d6efd,color:#084298
+    classDef componentStyle fill:#f8d7da,stroke:#dc3545,color:#842029
+    class signal signalStyle
+    class system systemStyle
+    class entity entityStyle
+    class component componentStyle
+```
+
+Here, the **Entity** is the counter instance, the **Component** stores its
+count, the **System** contains the increment logic, and the **Signal** tells
+the system when to run. The React display reads the updated component and
+re-renders.
+
 ## Core Concepts
 
-👉 Complete example can be found here: [examples/ecs-react-example](https://github.com/hasnainroopawalla/ecs-react/tree/main/examples/ecs-react-example)
+👉 Complete counter example: [examples/counter](https://github.com/hasnainroopawalla/ecs-react/tree/main/examples/counter/main.tsx)
 
 ### 1. Defining Types
 

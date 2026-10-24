@@ -1,4 +1,17 @@
 node_modules
 dist
-yarn-error.log
+coverage
+
+# Local environment and editor settings
+.env*
+!.env.example
+.vscode/settings.json
+
+# Package-manager logs and generated archives
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tgz
+
 .DS_Store

@@ -1,5 +1,5 @@
 {
-  "name": "ecs-react-example",
+  "name": "ecs-react-counter-example",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +8,7 @@
     "build": "tsc && vite build"
   },
   "dependencies": {
-    "ecs-react": "^1.1.6",
+    "ecs-react": "^1.1.8",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
